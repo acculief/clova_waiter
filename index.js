@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
-const TEMPLATE_INQUIRY = '星座を言うか、使い方、もしくは終了と呼びかけて下さい。';
+const TEMPLATE_INQUIRY = '星座を教えてね、もしくは終了と呼びかけてね。';
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -12,7 +12,7 @@ const clovaSkillHandler = clova.Client
     responseHelper.setSimpleSpeech({
       lang: 'ja',
       type: 'PlainText',
-      value: `「サンプル占い」が起動されました。${TEMPLATE_INQUIRY}`,
+      value: `「サンプル占い」起動したよ。${TEMPLATE_INQUIRY}`,
     });
   })
   // カスタムインテント or ビルトインインテント
@@ -43,14 +43,16 @@ const clovaSkillHandler = clova.Client
         }
         // 「中吉」だと「なかよし」発生されてしまう
         const fortune = ['大吉', 'ちゅうきち', '小吉', '吉', '凶']
+        const lucky = ['赤', '青', '黄色', '緑', 'ピンク']
         const zodiacSigns = ['牡羊座', '牡牛座', '双子座', '蟹座', '獅子座', '乙女座', '天秤座', '蠍座', '射手座', '山羊座', '水瓶座', '魚座']
         // 日と星座を元に運勢を決定。日が変わると違う運勢に。
         const fortuneToday = fortune[(new Date().getDate() + zodiacSigns.indexOf(slots.zodiac_signs)) % fortune.length]
+        const luckyToday = lucky[(new Date().getDate() + zodiacSigns.indexOf(slots.zodiac_signs)) % lucky.length]
 
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}です。${TEMPLATE_INQUIRY}`
+          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}!。ラッキーカラーは${luckyToday}だよん。${TEMPLATE_INQUIRY}`
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
