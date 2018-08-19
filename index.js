@@ -45,14 +45,16 @@ const clovaSkillHandler = clova.Client
         const fortune = ['大吉', 'ちゅうきち', '小吉', '吉', '凶']
         const lucky = ['赤', '青', '黄色', '緑', 'ピンク']
         const zodiacSigns = ['牡羊座', '牡牛座', '双子座', '蟹座', '獅子座', '乙女座', '天秤座', '蠍座', '射手座', '山羊座', '水瓶座', '魚座']
+        const message = [ '今日も１日頑張りましょう', 'お仕事頑張ってね', '暑いね', 'おやすみ' ]
         // 日と星座を元に運勢を決定。日が変わると違う運勢に。
         const fortuneToday = fortune[(new Date().getDate() + zodiacSigns.indexOf(slots.zodiac_signs)) % fortune.length]
         const luckyToday = lucky[(new Date().getDate() + zodiacSigns.indexOf(slots.zodiac_signs)) % lucky.length]
+        const messageToday = message[(new Date().getDate() + zodiacSigns.indexOf(slots.zodiac_signs)) % message.length]
 
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}!。ラッキーカラーは${luckyToday}だよん。${TEMPLATE_INQUIRY}`
+          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}!。ラッキーカラーは${luckyToday}だよん。${messageToday}。{TEMPLATE_INQUIRY}`
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
