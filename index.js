@@ -54,7 +54,7 @@ const clovaSkillHandler = clova.Client
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}!。ラッキーカラーは${luckyToday}だよん。${messageToday}。{TEMPLATE_INQUIRY}`
+          value: `${slots.zodiac_signs}の今日の運勢は${fortuneToday}!。ラッキーカラーは${luckyToday}だよん。${messageToday}。${TEMPLATE_INQUIRY}`
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
