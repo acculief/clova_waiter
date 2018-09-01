@@ -90,7 +90,7 @@ const clovaSkillHandler = clova.Client
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `はい。　${plusSpeech}　${detailSpeech}`
+          value: `はい。　${detailSpeech}　${plusSpeech}`
         }
 
         responseHelper.setSimpleSpeech(speech)
