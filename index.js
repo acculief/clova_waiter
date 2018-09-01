@@ -121,7 +121,6 @@ const clovaSkillHandler = clova.Client
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
-
         break;
       // ビルトインインテント。ユーザーによるインプットが使い方のリクエストと判別された場合
       case 'Clova.GuideIntent':
@@ -132,7 +131,6 @@ const clovaSkillHandler = clova.Client
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
-        //});
         break;
       // ビルトインインテント。ユーザーによるインプットが肯定/否定/キャンセルのみであった場合
       case 'Clova.YesIntent':
@@ -141,7 +139,6 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
-          total = 0
           if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
           }
@@ -179,6 +176,7 @@ const clovaSkillHandler = clova.Client
           value: `ありがとうございます。復唱します。${againScript}`,
         }
         againScript = ''
+        total = 0
         responseHelper.setSimpleSpeech(speech)
         break;
     }
