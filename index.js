@@ -37,8 +37,7 @@ const clovaSkillHandler = clova.Client
           break
         }
 
-        var orderNameList = ['コーヒー']
-        orderName.push(orderNameList.indexOf(slots.menuSlot))
+        orderName.push(slots.menuSlot)
         orderAmount.push(slots.amountSlot)
 
         speech = {
@@ -66,7 +65,7 @@ const clovaSkillHandler = clova.Client
       case 'Clova.NoIntent':
       case 'Clova.CancelIntent':
         for (var i = 0; i < orderName.length; i++) {
-          againScript += orderName + 'を' + 'orderAmount' + '個'
+          againScript += orderName + 'を' + orderAmount + '個'
         }
         againScript += '以上のご注文を受け付けました。'
         speech = {
