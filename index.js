@@ -37,9 +37,12 @@ const clovaSkillHandler = clova.Client
           break
         }
 
-        //orderNameList = ['コーヒー']
-        //orderName.push(orderNameList.indexOf(slots.menuSlot))
-        //orderAmount.push(slots.menuSlot)
+        var orderNameList = ['コーヒー']
+        orderName.push(orderNameList.indexOf(slots.menuSlot))
+        orderAmount.push(slots.menuSlot)
+
+        console.log(orderName)
+        console.log(orderAmount)
 
         speech = {
           lang: 'ja',
