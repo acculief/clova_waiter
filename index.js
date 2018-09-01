@@ -37,9 +37,11 @@ const clovaSkillHandler = clova.Client
           break
         }
 
+        console.log('here')
+
         var orderNameList = ['コーヒー']
         orderName.push(orderNameList.indexOf(slots.menuSlot))
-        orderAmount.push(slots.menuSlot)
+        orderAmount.push(slots.amountSlot)
 
         console.log(orderName)
         console.log(orderAmount)
