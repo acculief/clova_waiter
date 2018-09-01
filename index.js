@@ -43,31 +43,31 @@ const clovaSkillHandler = clova.Client
         q = slotsA.menuSlot
 
         if (q == 'コーヒー') {
-          detailSpeech = 'コーヒーほげ'
+          detailSpeech = 'ふかいりコロンビアをしようしたにがみとさんみのバランスのとれたコーヒーです。'
         }
         if (q == 'コーラ') {
-          detailSpeech = 'コーラほげ'
+          detailSpeech = '炭酸のきいたさわやかなコーラです。'
         }
         if (q == 'アイスティー') {
-          detailSpeech = 'アイスティーほげ'
+          detailSpeech = 'いちにちかけてみずだしされたフルーティーなアイスティーです。'
         }
         if (q == 'ホットドッグ') {
-          detailSpeech = 'ホットドッグほげ'
+          detailSpeech = 'マスタードのきいたスパイシーなホットドッグです。'
         }
         if (q == 'オムライス') {
-          detailSpeech = 'オムライスほげ'
+          detailSpeech = 'はんじゅくにしあげたふわふわがとくちょうのオムライスです。'
         }
         if (q == 'サンドイッチ') {
-          detailSpeech = 'サンドイッチほげ'
+          detailSpeech = 'たまご、はむ、れたす、のさんしゅのぐざいをはさんだサンドイッチです。'
         }
         if (q == 'チーズケーキ') {
-          detailSpeech = 'チーズケーキほげ'
+          detailSpeech = 'のうこうなチーズのまろやかなあじわいがとくちょうのケーキです。'
         }
         if (q == 'チョコレートケーキ') {
-          detailSpeech = 'チョコレートケーキほげ'
+          detailSpeech = 'ビターチョコレートをもちいたあまさとにがみのバランスのとれたケーキです。'
         }
         if (q == 'ショートケーキ') {
-          detailSpeech = 'ショートケーキほげ'
+          detailSpeech = 'あまおうをしようしたほうじゅんなあまみがとくちょうのケーキです。'
         }
 
         speech = {
