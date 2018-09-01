@@ -67,6 +67,8 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
+          orderName[i] = ''
+          orderAmount[i] = ''
         }
         againScript += '。　以上のご注文を受け付けました。'
         speech = {
