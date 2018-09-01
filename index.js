@@ -140,9 +140,17 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           json = {}
-          jsonin = json[i]
-          jsonin['order_name'] = orderName[i]
-          jsonin['order_amount'] = orderAmount[i]
+          json['order_name'] = orderName[i]
+          json['order_amount'] = orderAmount[i]
+          var request = require('request');
+          var options = {
+            uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
+            headers: {
+              "Content-type": "application/json",
+            },
+            json: json
+          };
+          request.post(options, function (error, response, body) { });
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
           if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
@@ -185,15 +193,6 @@ const clovaSkillHandler = clova.Client
         json = JSON.stringify(json);
         responseHelper.setSimpleSpeech(speech)
         break;
-        var request = require('request');
-        var options = {
-          uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
-          headers: {
-            "Content-type": "application/json",
-          },
-          json: json
-        };
-        request.post(options, function (error, response, body) { });
     }
   })
   // スキルの終了リクエスト
