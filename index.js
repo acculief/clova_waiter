@@ -144,7 +144,8 @@ const clovaSkillHandler = clova.Client
           json['order_amount'] = orderAmount[i]
           var request = require('request');
           var options = {
-            uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
+            // uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
+            uri: "http://localhost:3000/api/v1/orders",
             headers: {
               "Content-type": "application/json",
             },
