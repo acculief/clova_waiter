@@ -1,3 +1,4 @@
+const request = require('request');
 const clova = require('@line/clova-cek-sdk-nodejs');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -142,10 +143,8 @@ const clovaSkillHandler = clova.Client
           json = {}
           json['order_name'] = orderName[i]
           json['order_amount'] = orderAmount[i]
-          var request = require('request');
           var options = {
-            // uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
-            uri: "http://localhost:3000/api/v1/orders",
+            uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
             headers: {
               "Content-type": "application/json",
             },
