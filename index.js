@@ -10,11 +10,14 @@ let againScript = '';
 let total = 0;
 let q = '';
 let detailSpeech = '';
+let plusSpeech = '';
+let first = true;
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
   // スキルの起動リクエスト
   .onLaunchRequest(responseHelper => {
+    first = true
     responseHelper.setSimpleSpeech({
       lang: 'ja',
       type: 'PlainText',
@@ -44,36 +47,50 @@ const clovaSkillHandler = clova.Client
 
         if (q == 'コーヒー') {
           detailSpeech = 'ふかいりコロンビアをしようしたにがみとさんみのバランスのとれたコーヒーです。'
+          plusSpeech = 'ごいっしょにケーキなどはいかがですか。'
         }
         if (q == 'コーラ') {
           detailSpeech = '炭酸のきいたさわやかなコーラです。'
+          plusSpeech = 'ごいっしょにケーキなどはいかがですか。'
         }
         if (q == 'アイスティー') {
           detailSpeech = 'いちにちかけてみずだしされたフルーティーなアイスティーです。'
+          plusSpeech = 'ごいっしょにケーキなどはいかがですか。'
         }
         if (q == 'ホットドッグ') {
           detailSpeech = 'マスタードのきいたスパイシーなホットドッグです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
         if (q == 'オムライス') {
           detailSpeech = 'はんじゅくにしあげたふわふわがとくちょうのオムライスです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
         if (q == 'サンドイッチ') {
           detailSpeech = 'たまご、はむ、れたす、のさんしゅのぐざいをはさんだサンドイッチです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
         if (q == 'チーズケーキ') {
           detailSpeech = 'のうこうなチーズのまろやかなあじわいがとくちょうのケーキです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
         if (q == 'チョコレートケーキ') {
           detailSpeech = 'ビターチョコレートをもちいたあまさとにがみのバランスのとれたケーキです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
         if (q == 'ショートケーキ') {
           detailSpeech = 'あまおうをしようしたほうじゅんなあまみがとくちょうのケーキです。'
+          plusSpeech = 'ごいっしょにおのみものなどはいかがですか。'
         }
+
+        if (first == false) {
+          plusSpeech = ""
+        }
+        first = false
 
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `はい。　${detailSpeech}`
+          value: `はい。　${plusSpeech}　${detailSpeech}`
         }
 
         responseHelper.setSimpleSpeech(speech)
