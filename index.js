@@ -18,7 +18,7 @@ const clovaSkillHandler = clova.Client
 
   var orderName  = []
   var orderAmount = []
-  var againScript = '';
+  var againScript = ''
 
   // カスタムインテント or ビルトインインテント
   .onIntentRequest(responseHelper => {
@@ -38,7 +38,7 @@ const clovaSkillHandler = clova.Client
           break
         }
 
-        orderNameList = [];
+        orderNameList = ['コーヒー']
         orderName.push(orderNameList.indexOf(slots.menuSlot))
         orderAmount.push(slots.menuSlot)
 
