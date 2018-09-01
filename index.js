@@ -123,32 +123,32 @@ const clovaSkillHandler = clova.Client
       case 'Clova.CancelIntent':
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
-          againScript += q + 'を' + orderAmount[i] + '個。　'
-          if (q == 'コーヒー') {
+          againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
+          if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
           }
-          if (q == 'コーラ') {
+          if (orderName[i] == 'コーラ') {
             total += 600 * orderAmount[i]
           }
-          if (q == 'アイスティー') {
+          if (orderName[i] == 'アイスティー') {
             total += 400  * orderAmount[i]
           }
-          if (q == 'ホットドッグ') {
+          if (orderName[i] == 'ホットドッグ') {
             total += 1200  * orderAmount[i]
           }
-          if (q == 'オムライス') {
+          if (orderName[i] == 'オムライス') {
             total += 1500  * orderAmount[i]
           }
-          if (q == 'サンドイッチ') {
+          if (orderName[i] == 'サンドイッチ') {
             total += 1000  * orderAmount[i]
           }
-          if (q == 'チーズケーキ') {
+          if (orderName[i] == 'チーズケーキ') {
             total += 1800 * orderAmount[i]
           }
-          if (q == 'チョコレートケーキ') {
+          if (orderName[i] == 'チョコレートケーキ') {
             total += 1800 * orderAmount[i]
           }
-          if (q == 'ショートケーキ') {
+          if (orderName[i] == 'ショートケーキ') {
             total += 2000 * orderAmount[i]
           }
         }
