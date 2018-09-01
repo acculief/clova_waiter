@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
 const TEMPLATE_INQUIRY = 'ご注文をどうぞ。';
+let orderName  = [];
+let orderAmount = [];
+let againScript = '';
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -15,10 +18,6 @@ const clovaSkillHandler = clova.Client
       value: `いらっしゃいませ。${TEMPLATE_INQUIRY}`,
     });
   })
-
-  let orderName  = [];
-  let orderAmount = [];
-  let againScript = '';
 
   // カスタムインテント or ビルトインインテント
   .onIntentRequest(responseHelper => {
