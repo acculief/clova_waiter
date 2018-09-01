@@ -26,7 +26,7 @@ const clovaSkillHandler = clova.Client
     switch (intent) {
       case 'menuIntent':
         const slots = responseHelper.getSlots()
-        if(slots.menuSlot == null) {
+        if(slots.menuSlot == null || slots.amountSlot == null) {
           speech = {
             lang: 'ja',
             type: 'PlainText',
