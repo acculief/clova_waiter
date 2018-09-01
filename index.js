@@ -29,8 +29,8 @@ const clovaSkillHandler = clova.Client
     switch (intent) {
       // 詳細インテント
       case 'detailIntent':
-        const slots = responseHelper.gerSlots()
-        if(slots.menuSlot) == null{
+        const slotsA = responseHelper.gerSlots()
+        if(slotsA.menuSlot) == null{
           speech = {
             lang: 'ja',
             type: 'PlainText',
@@ -40,7 +40,7 @@ const clovaSkillHandler = clova.Client
           responseHelper.setSimpleSpeech(speech, true)
         }
 
-        q = slots.menuSlot
+        q = slotsA.menuSlot
 
         if (q == 'コーヒー') {
           detailSpeech = 'コーヒーほげ'
@@ -75,6 +75,7 @@ const clovaSkillHandler = clova.Client
           type: 'PlainText',
           value: `はい。　${detailSpeech}`
         }
+
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
 
