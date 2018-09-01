@@ -64,6 +64,7 @@ const clovaSkillHandler = clova.Client
       case 'Clova.YesIntent':
       case 'Clova.NoIntent':
       case 'Clova.CancelIntent':
+        againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
         }
