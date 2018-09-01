@@ -8,6 +8,8 @@ let orderName  = [];
 let orderAmount = [];
 let againScript = '';
 let total = 0;
+let q = '';
+let detailSpeech = '';
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -25,6 +27,59 @@ const clovaSkillHandler = clova.Client
     const intent = responseHelper.getIntentName();
     let speech;
     switch (intent) {
+      // 詳細インテント
+      case 'detailIntent':
+        const slots = responseHelper.gerSlots()
+        if(slots.menuSlot) == null{
+          speech = {
+            lang: 'ja',
+            type: 'PlainText',
+            value: `もう一度お願いします。`
+          }
+          responseHelper.setSimpleSpeech(speech)
+          responseHelper.setSimpleSpeech(speech, true)
+        }
+
+        q = slots.menuSlot
+
+        if (q == 'コーヒー') {
+          detailSpeech = 'コーヒーほげ'
+        }
+        if (q == 'コーラ') {
+          detailSpeech = 'コーラほげ'
+        }
+        if (q == 'アイスティー') {
+          detailSpeech = 'アイスティーほげ'
+        }
+        if (q == 'ホットドッグ') {
+          detailSpeech = 'ホットドッグほげ'
+        }
+        if (q == 'オムライス') {
+          detailSpeech = 'オムライスほげ'
+        }
+        if (q == 'サンドイッチ') {
+          detailSpeech = 'サンドイッチほげ'
+        }
+        if (q == 'チーズケーキ') {
+          detailSpeech = 'チーズケーキほげ'
+        }
+        if (q == 'チョコレートケーキ') {
+          detailSpeech = 'チョコレートケーキほげ'
+        }
+        if (q == 'ショートケーキ') {
+          detailSpeech = 'ショートケーキほげ'
+        }
+
+        speech = {
+          lang: 'ja',
+          type: 'PlainText',
+          value: `はい。　${detailSpeech}`
+        }
+        responseHelper.setSimpleSpeech(speech)
+        responseHelper.setSimpleSpeech(speech, true)
+
+        break;
+      // メニューインテント
       case 'menuIntent':
         const slots = responseHelper.getSlots()
         if(slots.menuSlot == null || slots.amountSlot == null) {
@@ -67,32 +122,32 @@ const clovaSkillHandler = clova.Client
       case 'Clova.CancelIntent':
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
-          againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
-          if (orderName[i] == 'コーヒー') {
+          againScript += q + 'を' + orderAmount[i] + '個。　'
+          if (q == 'コーヒー') {
             total += 400 * orderAmount[i]
           }
-          if (orderName[i] == 'コーラ') {
+          if (q == 'コーラ') {
             total += 600 * orderAmount[i]
           }
-          if (orderName[i] == 'アイスティー') {
+          if (q == 'アイスティー') {
             total += 400  * orderAmount[i]
           }
-          if (orderName[i] == 'ホットドッグ') {
+          if (q == 'ホットドッグ') {
             total += 1200  * orderAmount[i]
           }
-          if (orderName[i] == 'オムライス') {
+          if (q == 'オムライス') {
             total += 1500  * orderAmount[i]
           }
-          if (orderName[i] == 'サンドイッチ') {
+          if (q == 'サンドイッチ') {
             total += 1000  * orderAmount[i]
           }
-          if (orderName[i] == 'チーズケーキ') {
+          if (q == 'チーズケーキ') {
             total += 1800 * orderAmount[i]
           }
-          if (orderName[i] == 'チョコレートケーキ') {
+          if (q == 'チョコレートケーキ') {
             total += 1800 * orderAmount[i]
           }
-          if (orderName[i] == 'ショートケーキ') {
+          if (q == 'ショートケーキ') {
             total += 2000 * orderAmount[i]
           }
         }
