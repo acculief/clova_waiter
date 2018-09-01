@@ -43,13 +43,13 @@ const clovaSkillHandler = clova.Client
         orderName.push(orderNameList.indexOf(slots.menuSlot))
         orderAmount.push(slots.amountSlot)
 
-        console.log(orderName)
+        console.log(orderName[0])
         console.log(orderAmount)
 
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `追加の注文をどうぞ`
+          value: `追加のご注文をどうぞ`
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
