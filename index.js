@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
-const TEMPLATE_INQUIRY = '星座を教えてね、もしくは終了と呼びかけてね。';
+const TEMPLATE_INQUIRY = 'あいうえおかきくけこ';
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -12,7 +12,7 @@ const clovaSkillHandler = clova.Client
     responseHelper.setSimpleSpeech({
       lang: 'ja',
       type: 'PlainText',
-      value: `「サンプル占い」起動したよ。${TEMPLATE_INQUIRY}`,
+      value: `いらっしゃいませ。${TEMPLATE_INQUIRY}`,
     });
   })
   // カスタムインテント or ビルトインインテント
