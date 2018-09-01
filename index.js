@@ -7,6 +7,7 @@ const TEMPLATE_INQUIRY = 'ご注文をどうぞ。';
 let orderName  = [];
 let orderAmount = [];
 let againScript = '';
+let total = 0;
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -67,10 +68,37 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
+          if (orderName[i] == 'コーヒー') {
+            total += 400
+          }
+          if (orderName[i] == 'コーラ') {
+            total += 600
+          }
+          if (orderName[i] == 'アイスティー') {
+            total += 400
+          }
+          if (orderName[i] == 'ホットドッグ') {
+            total += 1200
+          }
+          if (orderName[i] == 'オムライス') {
+            total += 1500
+          }
+          if (orderName[i] == 'サンドイッチ') {
+            total += 1000
+          }
+          if (orderName[i] == 'チーズケーキ') {
+            total += 1800
+          }
+          if (orderName[i] == 'チョコレートケーキ') {
+            total += 1800
+          }
+          if (orderName[i] == 'ショートケーキ') {
+            total += 2000
+          }
         }
         orderName = []
         orderAmount = []
-        againScript += '。　以上のご注文を受け付けました。'
+        againScript += `。　以上のご注文を受け付けました。　合計で${total}円でございます。　少々お待ちください。`
         speech = {
           lang: 'ja',
           type: 'PlainText',
