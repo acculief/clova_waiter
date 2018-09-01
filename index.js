@@ -140,8 +140,8 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           json = {}
-          var json[i]['order_name'] = orderName[i]
-          var json[i]['order_amount'] = orderAmount[i]
+          json[i].'order_name' = orderName[i]
+          json[i].'order_amount' = orderAmount[i]
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
           if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
