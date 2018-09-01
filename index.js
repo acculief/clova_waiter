@@ -30,7 +30,7 @@ const clovaSkillHandler = clova.Client
       // 詳細インテント
       case 'detailIntent':
         const slotsA = responseHelper.gerSlots()
-        if(slotsA.menuSlot) == null{
+        if(slotsA.menuSlot == null){
           speech = {
             lang: 'ja',
             type: 'PlainText',
