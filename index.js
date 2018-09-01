@@ -16,9 +16,9 @@ const clovaSkillHandler = clova.Client
     });
   })
 
-  //var orderName  = [];
-  //var orderAmount = [];
-  //var againScript = '';
+  var orderName  = [];
+  var orderAmount = [];
+  var againScript = '';
 
   // カスタムインテント or ビルトインインテント
   .onIntentRequest(responseHelper => {
