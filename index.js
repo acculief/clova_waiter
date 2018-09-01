@@ -24,7 +24,7 @@ const clovaSkillHandler = clova.Client
     const intent = responseHelper.getIntentName();
     let speech;
     switch (intent) {
-      case 'MenuIntent':
+      case 'menuIntent':
         const slots = responseHelper.getSlots()
         if(slots.menuSlot == null) {
           speech = {
