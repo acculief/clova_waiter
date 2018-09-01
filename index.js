@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
-const TEMPLATE_INQUIRY = 'ご注文をどうぞ。';
+const TEMPLATE_INQUIRY = 'ほんじつのおすすめはサンドイッチです。イベリコぶたをふんだんにしようしました。ぜひごしょうみください。ご注文をどうぞ。';
 let orderName  = [];
 let orderAmount = [];
 let againScript = '';
