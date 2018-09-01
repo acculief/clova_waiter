@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
-const TEMPLATE_INQUIRY = 'ほんじつのおすすめはサンドイッチです。イベリコぶたとしゃきしゃきレタスをふんだんにしようしました。ぜひごしょうみください。ご注文をどうぞ。';
+const TEMPLATE_INQUIRY = 'ほんじつのおすすめはサンドイッチです。イベリコぶたとちばけんさんのしゃきしゃきレタスをふんだんにしようしました。ぜひごしょうみください。ご注文をどうぞ。';
 let orderName  = [];
 let orderAmount = [];
 let againScript = '';
@@ -141,6 +141,7 @@ const clovaSkillHandler = clova.Client
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
+          total = 0
           if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
           }
