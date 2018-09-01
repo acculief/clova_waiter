@@ -16,9 +16,9 @@ const clovaSkillHandler = clova.Client
     });
   })
 
-  var orderName  = []
-  var orderAmount = []
-  var againScript = ''
+  //var orderName  = [];
+  //var orderAmount = [];
+  //var againScript = '';
 
   // カスタムインテント or ビルトインインテント
   .onIntentRequest(responseHelper => {
@@ -38,9 +38,9 @@ const clovaSkillHandler = clova.Client
           break
         }
 
-        orderNameList = ['コーヒー']
-        orderName.push(orderNameList.indexOf(slots.menuSlot))
-        orderAmount.push(slots.menuSlot)
+        //orderNameList = ['コーヒー']
+        //orderName.push(orderNameList.indexOf(slots.menuSlot))
+        //orderAmount.push(slots.menuSlot)
 
         speech = {
           lang: 'ja',
@@ -66,14 +66,14 @@ const clovaSkillHandler = clova.Client
       case 'Clova.YesIntent':
       case 'Clova.NoIntent':
       case 'Clova.CancelIntent':
-        for (var i = 0; i < orderName.length; i++) {
-          againScript += orderName + 'を' + 'orderAmount' + '個'
-        }
-        againScript += '以上でよろしいでしょうか。'
+        //for (var i = 0; i < orderName.length; i++) {
+        //  againScript += orderName + 'を' + 'orderAmount' + '個'
+        //}
+        //againScript += '以上でよろしいでしょうか。'
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `ありがとうございます。復唱します。${againScript}`
+          value: `ありがとうございます。復唱します。`
         }
         responseHelper.setSimpleSpeech(speech)
         break;
