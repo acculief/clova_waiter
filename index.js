@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 // 応答の最後に追加するテンプレート
 const TEMPLATE_INQUIRY = 'ほんじつのおすすめはサンドイッチです。イベリコぶたとちばけんさんのしゃきしゃきレタスをふんだんにしようしました。ぜひごしょうみください。ご注文をどうぞ。';
-let orderName  = [];
+let orderName = [];
 let orderAmount = [];
 let againScript = '';
 let total = 0;
@@ -12,6 +12,7 @@ let q = '';
 let detailSpeech = '';
 let plusSpeech = '';
 let first = true;
+let json = {};
 
 const clovaSkillHandler = clova.Client
   .configureSkill()
@@ -33,7 +34,7 @@ const clovaSkillHandler = clova.Client
       // 詳細インテント
       case 'detailIntent':
         const slotsA = responseHelper.getSlots()
-        if(slotsA.menuSlot == null){
+        if (slotsA.menuSlot == null) {
           speech = {
             lang: 'ja',
             type: 'PlainText',
@@ -100,7 +101,7 @@ const clovaSkillHandler = clova.Client
       // メニューインテント
       case 'menuIntent':
         const slots = responseHelper.getSlots()
-        if(slots.menuSlot == null || slots.amountSlot == null) {
+        if (slots.menuSlot == null || slots.amountSlot == null) {
           speech = {
             lang: 'ja',
             type: 'PlainText',
@@ -138,6 +139,9 @@ const clovaSkillHandler = clova.Client
       case 'Clova.CancelIntent':
         againScript = ''
         for (var i = 0; i < orderName.length; i++) {
+          json = {}
+          json[i]['order_name'] = orderName[i]
+          json[i]['order_amount'] = orderAmount[i]
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
           if (orderName[i] == 'コーヒー') {
             total += 400 * orderAmount[i]
@@ -146,16 +150,16 @@ const clovaSkillHandler = clova.Client
             total += 600 * orderAmount[i]
           }
           if (orderName[i] == 'アイスティー') {
-            total += 400  * orderAmount[i]
+            total += 400 * orderAmount[i]
           }
           if (orderName[i] == 'ホットドッグ') {
-            total += 1200  * orderAmount[i]
+            total += 1200 * orderAmount[i]
           }
           if (orderName[i] == 'オムライス') {
-            total += 1500  * orderAmount[i]
+            total += 1500 * orderAmount[i]
           }
           if (orderName[i] == 'サンドイッチ') {
-            total += 1000  * orderAmount[i]
+            total += 1000 * orderAmount[i]
           }
           if (orderName[i] == 'チーズケーキ') {
             total += 1800 * orderAmount[i]
@@ -177,8 +181,18 @@ const clovaSkillHandler = clova.Client
         }
         againScript = ''
         total = 0
+        json = JSON.stringify(json);
         responseHelper.setSimpleSpeech(speech)
         break;
+        var request = require('request');
+        var options = {
+          uri: "https://clova-waiter.herokuapp.com/api/v1/orders",
+          headers: {
+            "Content-type": "application/json",
+          },
+          json: json
+        };
+        request.post(options, function (error, response, body) { });
     }
   })
   // スキルの終了リクエスト
