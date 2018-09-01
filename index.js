@@ -44,7 +44,7 @@ const clovaSkillHandler = clova.Client
         speech = {
           lang: 'ja',
           type: 'PlainText',
-          value: `追加のご注文をどうぞ`
+          value: `はい。　追加のご注文をどうぞ`
         }
         responseHelper.setSimpleSpeech(speech)
         responseHelper.setSimpleSpeech(speech, true)
@@ -69,31 +69,31 @@ const clovaSkillHandler = clova.Client
         for (var i = 0; i < orderName.length; i++) {
           againScript += orderName[i] + 'を' + orderAmount[i] + '個。　'
           if (orderName[i] == 'コーヒー') {
-            total += 400
+            total += 400 * orderAmount[i]
           }
           if (orderName[i] == 'コーラ') {
-            total += 600
+            total += 600 * orderAmount[i]
           }
           if (orderName[i] == 'アイスティー') {
-            total += 400
+            total += 400  * orderAmount[i]
           }
           if (orderName[i] == 'ホットドッグ') {
-            total += 1200
+            total += 1200  * orderAmount[i]
           }
           if (orderName[i] == 'オムライス') {
-            total += 1500
+            total += 1500  * orderAmount[i]
           }
           if (orderName[i] == 'サンドイッチ') {
-            total += 1000
+            total += 1000  * orderAmount[i]
           }
           if (orderName[i] == 'チーズケーキ') {
-            total += 1800
+            total += 1800 * orderAmount[i]
           }
           if (orderName[i] == 'チョコレートケーキ') {
-            total += 1800
+            total += 1800 * orderAmount[i]
           }
           if (orderName[i] == 'ショートケーキ') {
-            total += 2000
+            total += 2000 * orderAmount[i]
           }
         }
         orderName = []
